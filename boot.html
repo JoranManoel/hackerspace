@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicializando Sistema...</title>
+
+    <style>
+        body {
+            background: #020617;
+            color: #22c55e;
+            font-family: monospace;
+            padding: 30px;
+            overflow: hidden;
+        }
+
+        #terminal {
+            white-space: pre-line;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background: #22c55e;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+        .progress-container {
+            margin-top: 20px;
+            width: 100%;
+            height: 10px;
+            border: 1px solid #22c55e;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #22c55e;
+            transition: width 0.2s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="terminal"></div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="bar"></div>
+    </div>
+
+    <script>
+
+        const linhas = [
+            "> Booting Hackerspace OS...",
+            "> Carregando módulos...",
+            "> Inicializando sistema de segurança...",
+            "> Conectando ao servidor...",
+            "> Acesso autorizado ✔",
+            "> Preparando ambiente de desafios...",
+            "> Sistema pronto."
+        ];
+
+        let i = 0;
+        let j = 0;
+        let textoAtual = "";
+        const terminal = document.getElementById("terminal");
+
+        function digitar() {
+            if (i < linhas.length) {
+                if (j < linhas[i].length) {
+                    textoAtual += linhas[i].charAt(j);
+                    terminal.innerHTML = textoAtual + '<span class="cursor"></span>';
+                    j++;
+                    setTimeout(digitar, 20);
+                } else {
+                    textoAtual += "\n";
+                    i++;
+                    j = 0;
+                    setTimeout(digitar, 300);
+                }
+            } else {
+                iniciarBarra();
+            }
+        }
+
+        function iniciarBarra() {
+            let progresso = 0;
+            const barra = document.getElementById("bar");
+
+            const intervalo = setInterval(() => {
+                progresso += Math.random() * 15;
+                barra.style.width = progresso + "%";
+
+                if (progresso >= 100) {
+                    barra.style.width = "100%";
+                    clearInterval(intervalo);
+
+                    setTimeout(() => {
+                        const desafio = localStorage.getItem('desafio');
+                        window.location.href = "game.html";
+                    }, 1000);
+                }
+            }, 300);
+        }
+
+        digitar();
+
+    </script>
+
+</body>
+
+</html>

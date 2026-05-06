@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hackerspace Terminal</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="terminal">
+        <div class="header">
+            <div class="info">
+                <div>> Hackerspace OS v3.0</div>
+                <div class="hud">
+                    <div id="fase">Fase: 1/1</div>
+                    <div>Pontos: <span id="pontos">0</span></div>
+                    <div>Tempo: <span id="tempo">0</span>s</div>
+                    <!-- Ícone -->
+                    <i id="btnAudio" class="fa-solid btn fa-volume-xmark"></i>
+                </div>
+            </div>
+            <div>
+                <a style="cursor: pointer;" onclick="trocar()"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="line">> Reconstrua o sistema...</div>
+
+            <div id="montagem">
+                <div class="boxes">
+                    <div class="box" id="blocos"></div>
+                    <div class="box" id="resposta"></div>
+                </div>
+            </div>
+
+            <div id="senha" style="display:none">
+                <div class="line" id="dica"></div>
+                <input autocomplete="off" id="inputSenha" placeholder="> senha..." />
+            </div>
+
+            <div id="debug" style="display:none">
+                <div class="line">> Corrija o código:</div>
+                <div id="codigo" class="box"></div>
+                <input autocomplete="off" id="respostaDebug" placeholder="> correção..." />
+            </div>
+
+            <button onclick="validar()" >EXECUTAR</button>
+            <!-- <button onclick="limparRanking()">LIMPAR RANKING</button> -->
+
+            <div id="resultado" class="line"></div>
+            <div id="ranking"></div>
+        </div>
+    </div>
+    <audio id="somAbertura" src="audio/audio.mp3" loop></audio>
+
+    <script>
+        const audio = document.getElementById("somAbertura");
+        const botao = document.getElementById("btnAudio");
+
+        botao.addEventListener("click", () => {
+            if (audio.paused) {
+                audio.play();
+                botao.classList.remove("fa-volume-xmark");
+                botao.classList.add("fa-volume-high");
+            } else {
+                audio.pause();
+                botao.classList.remove("fa-volume-high");
+                botao.classList.add("fa-volume-xmark");
+            }
+        });
+    </script>
+    <script src="js/desafios.js"></script>
+    <script src="js/desafios/crudphp.js"></script>
+    <script src="js/desafios/php.js"></script>
+    <script src="js/desafios/python.js"></script>
+    <script src="js/desafios/portugol.js"></script>
+
+    <script>
+        let segredo = "";
+        const senha = "joran";
+
+        document.addEventListener("keydown", (e) => {
+            segredo += e.key.toLowerCase();
+
+            if (segredo.length > senha.length) {
+                segredo = segredo.slice(-senha.length);
+            }
+
+            if (segredo === senha) {
+                ativarEasterEgg();
+                segredo = "";
+            }
+        });
+
+        function ativarEasterEgg() {
+            const tela = document.createElement("div");
+
+            tela.style.position = "fixed";
+            tela.style.top = 0;
+            tela.style.left = 0;
+            tela.style.width = "100%";
+            tela.style.height = "100%";
+            tela.style.background = "#000";
+            tela.style.color = "#22c55e";
+            tela.style.fontFamily = "monospace";
+            tela.style.display = "flex";
+            tela.style.alignItems = "center";
+            tela.style.justifyContent = "center";
+            tela.style.flexDirection = "column";
+            tela.style.zIndex = 9999;
+
+            tela.innerHTML = `
+        <h1 style="text-shadow:0 0 10px #22c55e;">ACESSO SECRETO</h1>
+        <p>> Sistema desenvolvido por</p>
+        <h2 style="margin-top:10px;">JORAN</h2>
+        <p style="margin-top:20px; opacity:0.6;">pressione ESC para sair</p>
+    `;
+
+            document.body.appendChild(tela);
+
+            document.addEventListener("keydown", function fechar(e) {
+                if (e.key === "Escape") {
+                    tela.remove();
+                    document.removeEventListener("keydown", fechar);
+                }
+            });
+        }
+    </script>
+    <script src="js/engine.js"></script>
+
+</body>
+
+</html>
