@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Hackerspace</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="css/style.css">
     <style>
         * {
             margin: 0;
@@ -48,9 +48,15 @@
             opacity: 0.8;
         }
 
+       h2 i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #22c55e;
+        }
+
         .menu {
             display: grid;
-            grid-template-columns: repeat(2, 200px);
+            grid-template-columns: repeat(4, 200px);
             gap: 15px;
             justify-content: center;
         }
@@ -101,14 +107,9 @@
             animation: scan 5s linear infinite;
         }
 
-        .footer {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.7rem;
-            color: rgba(34, 197, 94, 0.5);
-            letter-spacing: 1px;
+        .locked {
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         @keyframes scan {
@@ -131,30 +132,80 @@
         <h1>> HACKERSPACE</h1>
         <div class="subtitle">Selecione um desafio para iniciar a missão</div>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
         <div class="menu">
             <button onclick="start('crudphp')">
-                <h1>
-                    <i class="fa-solid fa-database"></i>
-                </h1>
-                <span>CRUD PHP</span>
+                <h2>
+                    <i class="fa-solid fa-server"></i>
+                </h2>
+                <span>C.R.U.D com PHP</span>
             </button>
             <button onclick="start('php')">
-                 <h1>
+                <h2>
                     <i class="fa-brands fa-php"></i>
-                </h1>
+                </h2>
                 <span>PHP</span>
+                <p style="font-size: 12px; color: yellowgreen;">
+                    <i class="fa-solid fa-unlock"></i>
+                    (em desenvolvimento...)
+                </p>
             </button>
             <button onclick="start('python')">
-                <h1>
+                <h2>
                     <i class="fa-brands fa-python"></i>
-                </h1>
+                </h2>
                 <span>Python</span>
+                <p style="font-size: 12px; color: yellowgreen;">
+                    <i class="fa-solid fa-unlock"></i>
+                    (em desenvolvimento...)
+                </p>
+            </button>
+            <button>
+                <h2>
+                    <i class="fa-brands fa-html5"></i>
+                </h2>
+                <span>HTML</span>
+                <p style="font-size: 12px; color: red;">
+                    <i class="fa-solid fa-lock"></i>
+                    (embre breve...)
+                </p>
             </button>
             <button onclick="start('portugol')">
-                <h1>
-                    <i class="fa-solid fa-code"></i>
-                </h1>
-                <span>Portugol</span>
+                <h2 style="font-size: 45px; margin-bottom: 10px;">
+                    { }
+                </h2>
+                <span>Pseudocodigo</span>
+            </button>
+            <button>
+                <h2>
+                    <i class="fa-solid fa-database"></i>
+                </h2>
+                <span>SQL</span>
+                <p style="font-size: 12px; color: red;">
+                    <i class="fa-solid fa-lock"></i>
+                    (embre breve...)
+                </p>
+            </button>
+            <button>
+                <h2>
+                    <i class="fa-brands fa-js"></i>
+                </h2>
+                <span>JavaScript</span>
+                <p style="font-size: 12px; color: red;">
+                    <i class="fa-solid fa-lock"></i>
+                    (embre breve...)
+                </p>
+            </button>
+            <button>
+                <h2>
+                    <i class="fa-brands fa-node"></i>
+                </h2>
+                <span>Node</span>
+                <p style="font-size: 12px; color: red;">
+                    <i class="fa-solid fa-lock"></i>
+                    (embre breve...)
+                </p>
             </button>
         </div>
     </div>

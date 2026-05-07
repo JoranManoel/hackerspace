@@ -89,12 +89,12 @@
                     textoAtual += linhas[i].charAt(j);
                     terminal.innerHTML = textoAtual + '<span class="cursor"></span>';
                     j++;
-                    setTimeout(digitar, 20);
+                    setTimeout(digitar, 10);
                 } else {
                     textoAtual += "\n";
                     i++;
                     j = 0;
-                    setTimeout(digitar, 300);
+                    setTimeout(digitar, 50);
                 }
             } else {
                 iniciarBarra();
@@ -116,9 +116,9 @@
                     setTimeout(() => {
                         const desafio = localStorage.getItem('desafio');
                         window.location.href = "game.html";
-                    }, 1000);
+                    }, 500);
                 }
-            }, 300);
+            }, 100);
         }
 
         digitar();

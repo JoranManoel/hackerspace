@@ -21,7 +21,7 @@
                     <div>Pontos: <span id="pontos">0</span></div>
                     <div>Tempo: <span id="tempo">0</span>s</div>
                     <!-- Ícone -->
-                    <i id="btnAudio" class="fa-solid btn fa-volume-xmark"></i>
+                    <i id="btnAudio" class="fa-solid btnAudio fa-volume-xmark"></i>
                 </div>
             </div>
             <div>
@@ -50,7 +50,7 @@
                 <input autocomplete="off" id="respostaDebug" placeholder="> correção..." />
             </div>
 
-            <button onclick="validar()" >EXECUTAR</button>
+            <button class="btn" onclick="validar()" >EXECUTAR</button>
             <!-- <button onclick="limparRanking()">LIMPAR RANKING</button> -->
 
             <div id="resultado" class="line"></div>
@@ -133,6 +133,7 @@
         }
     </script>
     <script src="js/engine.js"></script>
+    <marquee behavior="scroll" direction="left" class="footer">desenvolvido por Joran</marquee>
 
 </body>
 
