@@ -82,7 +82,8 @@ desafios.python = [
         },
         debug: {
             bug: 'function somar(a,b):',
-            ok: 'def somar(a, b):'
+            ok: 'def somar(a,b):',
+            ok2: 'def somar(a, b):'
         }
     },
     {
