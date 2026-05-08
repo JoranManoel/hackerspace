@@ -104,7 +104,7 @@ function validar() {
 function timer() { start = Date.now(); setInterval(() => { t = Math.floor((Date.now() - start) / 1000); document.getElementById('tempo').innerText = t }, 1000) }
 
 function end() {
-    let nome = prompt('Nome:');
+    let nome = prompt('Missão completa! Digite seu nome:');
     nome = nome + ' - ' + desafioAtual;
     let r = JSON.parse(localStorage.getItem('rk') || '[]');
     r.push({ nome, tempo: t }); r.sort((a, b) => a.tempo - b.tempo);
