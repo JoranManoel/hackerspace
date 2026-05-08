@@ -43,7 +43,7 @@ desafios.python = [
     },
        {
         senha: 'for',
-        dica: '> Dica: listas em Python geralmente são percorridas com for...',
+        dica: '> Dica: listas em Python geralmente são percorridas com ...',
         montagem: {
             c: [
                 'nomes = ["Ana", "Carlos", "Maria"]',
